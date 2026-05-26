@@ -6,6 +6,7 @@ import {
   Lock,
   ArrowRight,
 } from "lucide-react";
+import API from "../services/api";
 
 export default function Login() {
   const navigate = useNavigate();
