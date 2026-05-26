@@ -16,7 +16,7 @@ function Sidebar() {
     {
       title: "Dashboard",
       icon: <LayoutDashboard size={20} />,
-      path: "/dashboard",
+      path: "/",
     },
     {
       title: "Analytics",
