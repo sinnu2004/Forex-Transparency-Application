@@ -17,28 +17,48 @@ export default function Login() {
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    setLoading(true);
-    setError("");
+  e.preventDefault();
 
-    try {
-      console.log({
+  setLoading(true);
+
+  setError("");
+
+  try {
+
+    const response = await API.post(
+      "/auth/login",
+      {
         email,
         password,
-      });
+      }
+    );
 
-      // Temporary navigation
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
+    console.log(response.data);
 
-    } catch (err) {
-      setError("Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Save Token
+    localStorage.setItem(
+      "token",
+      response.data.token
+    );
+
+    // Redirect
+    navigate("/");
+
+  } catch (err) {
+
+    console.log(err);
+
+    setError(
+      err.response?.data?.message ||
+      "Login failed"
+    );
+
+  } finally {
+
+    setLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-slate-950">
