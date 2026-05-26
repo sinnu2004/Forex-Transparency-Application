@@ -1,27 +1,28 @@
-const express = require('express');
+const express = require("express");
 
 const {
-    chatbot,
-    getChatHistory
-} = require('../controllers/chatbotController');
+  chatbot,
+  getChatHistory,
+} = require("../controllers/chatbotController");
 
 const {
-    protect
-} = require('../middlewares/authMiddleware');
+  protect,
+} = require("../middlewares/authMiddleware");
 
 const router = express.Router();
 
 // Chatbot API
 router.post(
-    '/',
-    protect,
-    chatbot
+  "/",
+  protect,
+  chatbot
 );
 
 // Chat History API
 router.get(
-    '/history',
-    protect,
-    getChatHistory
+  "/history",
+  protect,
+  getChatHistory
 );
-export default router;
+
+module.exports = router;

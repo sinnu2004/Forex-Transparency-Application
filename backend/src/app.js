@@ -1,9 +1,15 @@
-import express from "express";
-import cors from "cors";
+const express = require("express");
 
-import transactionRoutes from "./routes/transactionRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
-import chatbotRoutes from "./routes/chatbotRoutes.js";
+const cors = require("cors");
+
+const transactionRoutes =
+  require("./routes/transactionRoutes");
+
+const authRoutes =
+  require("./routes/authRoutes");
+
+const chatbotRoutes =
+  require("./routes/chatbotRoutes");
 
 const app = express();
 
@@ -31,4 +37,4 @@ app.use((req, res) => {
   });
 });
 
-export default app;
+module.exports = app;
